@@ -180,7 +180,7 @@ $(function () {
   var donut = new Morris.Donut({
     element: 'sales-chart',
     resize: true,
-    colors: ["#3c8dbc", "#f56954", "#00a65a"],
+    colors: ["#3c8dbc", "#f56954", "#FF9D9D"],
     data: [
       {label: "Download Sales", value: 12},
       {label: "In-Store Sales", value: 30},
@@ -212,7 +212,7 @@ $(function () {
           {y: '2011', a: 75, b: 65},
           {y: '2012', a: 100, b: 90}
         ],
-        barColors: ['#00a65a', '#f56954'],
+        barColors: ['#FF9D9D', '#f56954'],
         xkey: 'y',
         ykeys: ['a', 'b'],
         labels: ['CPU', 'DISK'],

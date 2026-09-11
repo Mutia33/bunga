@@ -7,7 +7,7 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes' name='viewport'>
 	<meta name="description" content="Aplikasi Ujian Online ZAYCBT">
 	<meta name="keywords" content="Aplikasi Ujian Online ZYACBT">
-	<meta name="author" content="Achmad Lutfi">
+	<meta name="author" content="Mutia Rahma Rismawan">
     <!-- Bootstrap 3.3.4 -->
     <link href="<?php echo base_url(); ?>public/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->

@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
 * ZYA CBT
-* Achmad Lutfi
-* achmdlutfi@gmail.com
-* achmadlutfi.wordpress.com
+* Mutia Rahma Rismawan
+* rahmamutia516@gmail.com
+* mutia.wordpress.com
 */
 class Tes_evaluasi extends Member_Controller {
 	private $kode_menu = 'tes-evaluasi';

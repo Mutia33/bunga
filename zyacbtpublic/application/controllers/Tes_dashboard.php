@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
 * ZYA CBT
-* Achmad Lutfi
-* achmdlutfi@gmail.com
-* achmadlutfi.wordpress.com
+* Mutia Rahma Rismawan
+* rahmamutia516@gmail.com
+* mutia.wordpress.com
 */
 class Tes_dashboard extends Tes_Controller {
 	private $kelompok = 'ujian';

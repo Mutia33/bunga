@@ -1,0 +1,154 @@
+/* Mengimpor font Lobster Two dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --butter-yellow: #FFE566;       /* Kuning butter lebih berani & menyala */
+    --butter-yellow-light: #FFF599; /* Kuning terang untuk transisi */
+    --sage-green: #8DAA68;          /* Sage green lebih pop & segar */
+    --sage-green-light: #A3C97A;    /* Sage terang untuk gradasi */
+    --sage-green-dark: #ff79bc;     /* Sage pekat untuk teks & hover */
+    --text-dark: #92cf83;
+}
+
+body {
+    /* Background gambar jernih HD */
+    background: url('https://i.pinimg.com/736x/59/36/b7/5936b7b975cc1f974441e75eabca95b4.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Mengubah font semua judul menjadi Lobster Two */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lobster Two', cursive;
+    letter-spacing: 1px;
+}
+
+header {
+    background-color: rgba(255, 253, 240, 0.92);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+    margin: 0;
+    color: var(--sage-green-dark);
+    font-size: 36px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555555;
+    margin: 0 15px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--sage-green-dark);
+}
+
+.container {
+    width: 85%;
+    margin: 30px auto;
+}
+
+/* Box untuk Halaman Utama / Hero */
+.hero {
+    background: rgba(255, 255, 255, 0.92) !important;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.hero h2 {
+    color: var(--sage-green-dark);
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+/* Box Umum untuk Halaman Lain (Jenis Bunga, Galeri, Keranjang, dll.) */
+.section-box {
+    background: rgba(255, 255, 255, 0.92) !important;
+    padding: 30px 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 20px auto 30px auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.section-box h2 {
+    color: var(--sage-green-dark);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(107, 124, 94, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Tombol dengan warna Sage Green yang harmonis */
+.btn {
+    display: inline-block;
+    background-color: var(--sage-green);
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(156, 175, 136, 0.4);
+}
+
+.btn:hover {
+    background-color: var(--sage-green-dark);
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 253, 240, 0.92);
+    margin-top: 40px;
+    font-size: 14px;
+    color: var(--text-dark);
+}
