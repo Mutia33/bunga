@@ -509,11 +509,19 @@ footer {
     background-color: #ffe6e6;
 }
 
+/* Pastikan area konten utama konsisten di semua halaman admin */
 .main-content {
-    margin-left: 240px;
-    padding: 35px;
-    width: calc(100% - 240px);
+    margin-left: 260px; /* Menyesuaikan lebar sidebar */
+    padding: 30px;
+    width: calc(100% - 260px);
     box-sizing: border-box;
+}
+
+/* Biar kotak-kotak ringkasan di dashboard ukurannya pas */
+.card-box, .banner {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 .main-content header h1 {
@@ -1264,4 +1272,66 @@ footer {
 
 .table-produk td {
     padding: 16px 14px !important;
+}
+
+/* Atur kontainer utama agar pas di sebelah kanan sidebar */
+.main-content {
+    margin-left: 260px; /* Sesuaikan dengan lebar sidebar kamu */
+    padding: 30px;
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+}
+
+/* Biar kotak statistik (Total Pelanggan, Produk, Pesanan) berjajar rapi ke samping */
+.stats-container, .dashboard-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Pastikan tiap kotak kecil punya ukuran fleksibel yang pas */
+.stats-card, .card-box {
+    box-sizing: border-box;
+}
+
+/* Atur pembungkus utama admin agar tidak ketiban sidebar */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Jika isi konten kanan punya pembungkus sendiri, pastikan lebarnya pas */
+.admin-container .main-content, 
+.admin-container > div:not(.sidebar) {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+}
+
+/* Atur kerangka utama agar sidebar di kiri dan konten di kanan sejajar */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Pastikan area konten utama mengambil sisa ruang di sebelah kanan sidebar */
+.admin-content {
+    margin-left: 260px; /* Lebar sidebar */
+    padding: 30px;
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+}
+
+/* Biar kotak statistik (Total Pelanggan, Produk, Pesanan) berjajar rapi ke samping */
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }

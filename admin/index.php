@@ -28,30 +28,14 @@ $total_produk = $query_produk ? mysqli_fetch_assoc($query_produk)['total'] : 0;
 
     <div class="admin-container">
         <!-- Sidebar Navigation -->
-        <aside class="admin-sidebar">
-            <div class="sidebar-brand">
-                <span>🌸</span>
-                <h2>Admin Bloom</h2>
-            </div>
-            
-            <nav class="sidebar-menu">
-                <a href="index.php" class="menu-item active">
-                    <span class="icon">🎀</span> Dashboard
-                </a>
-                <a href="produk.php" class="menu-item">
-                    <span class="icon">🌷</span> Kelola Produk
-                </a>
-                <a href="pesanan.php" class="menu-item">
-                    <span class="icon">🛍️</span> Kelola Pesanan
-                </a>
-                <a href="pelanggan.php" class="menu-item">
-                    <span class="icon">👥</span> Data Pelanggan
-                </a>
-                <a href="../logout.php" class="menu-item logout">
-                    <span class="icon">🚪</span> Logout
-                </a>
-            </nav>
-        </aside>
+        <div class="sidebar">
+        <h2>🌸 Admin Bloom</h2>
+        <a href="index.php" class="active">🎀 Dashboard</a>
+        <a href="produk.php">🌷 Kelola Produk</a>
+        <a href="pesanan.php">📦 Kelola Pesanan</a>
+        <a href="pelanggan.php">👥 Data Pelanggan</a>
+        <a href="../logout.php" class="logout">🚪 Logout</a>
+    </div>
 
         <!-- Main Content Area -->
         <main class="admin-content">
