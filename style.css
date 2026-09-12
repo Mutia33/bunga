@@ -152,3 +152,340 @@ footer {
     font-size: 14px;
     color: var(--text-dark);
 }
+
+/* ==========================================
+   STYLE HALAMAN LOGIN (BLOOM & CO.)
+   ========================================== */
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    width: 340px;
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-top: 0;
+    color: #d86b89;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #7a7a7a;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #f2cfd7;
+    border-radius: 12px;
+    box-sizing: border-box;
+    background-color: #fff9fa;
+    outline: none;
+    color: #555;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #d86b89;
+    box-shadow: 0 0 5px rgba(216, 107, 137, 0.3);
+}
+
+.btn-login-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #94b475;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-login-submit:hover {
+    background-color: #7f9f62;
+}
+
+.error-msg {
+    background-color: #ffe6e6;
+    color: #d9534f;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.footer-text {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
+}
+
+.footer-text a {
+    color: #d86b89;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* Style Tombol Kembali */
+/* Style Tombol Kembali di Tengah */
+.btn-back {
+    display: inline-block;
+    margin-top: 15px;
+    color: #888;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    color: #d86b89;
+    text-decoration: underline;
+}
+
+/* Clearfix agar tata letak judul tidak berantakan */
+.clear {
+    clear: both;
+}
+
+/* ==========================================
+   STYLE HALAMAN REGISTER (BLOOM & CO.)
+   ========================================== */
+
+.register-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 20px;
+}
+
+.register-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    width: 360px;
+    text-align: center;
+}
+
+.register-box h2 {
+    margin-top: 0;
+    color: #d86b89;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #f2cfd7;
+    border-radius: 12px;
+    box-sizing: border-box;
+    background-color: #fff9fa;
+    outline: none;
+    color: #555;
+    font-family: inherit;
+    resize: vertical;
+    transition: 0.3s;
+}
+
+.form-group textarea:focus {
+    border-color: #d86b89;
+    box-shadow: 0 0 5px rgba(216, 107, 137, 0.3);
+}
+
+.success-msg {
+    background-color: #e6fffa;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   STYLE DASHBOARD ADMIN (BLOOM & CO.)
+   ========================================== */
+
+.admin-body {
+    display: flex;
+    margin: 0;
+    background-color: #f7efe5;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Sidebar Navigasi */
+.sidebar {
+    width: 240px;
+    background-color: #ffffff;
+    height: 100vh;
+    padding: 25px 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+    position: fixed;
+}
+
+.sidebar h2 {
+    color: #d86b89;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 12px;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 12px 15px;
+    color: #666;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover, 
+.sidebar ul li a.active {
+    background-color: #fff0f3;
+    color: #d86b89;
+    font-weight: bold;
+}
+
+.sidebar ul li a.btn-logout {
+    color: #d9534f;
+    margin-top: 20px;
+}
+
+.sidebar ul li a.btn-logout:hover {
+    background-color: #ffe6e6;
+}
+
+/* Konten Utama */
+.main-content {
+    margin-left: 240px;
+    padding: 35px;
+    width: calc(100% - 240px);
+    box-sizing: border-box;
+}
+
+.main-content header h1 {
+    color: #4a4a4a;
+    margin: 0;
+    font-size: 26px;
+}
+
+.main-content header p {
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Card Statistik */
+.card-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+
+.card h3 {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.card .card-count {
+    font-size: 28px;
+    font-weight: bold;
+    color: #94b475;
+    margin: 10px 0 0 0;
+}
+
+.quick-info {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    margin-top: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+
+/* Styling Tambahan Produk Admin */
+.badge-kategori {
+    background-color: #fce4ec;
+    color: #d86b89;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.btn-edit {
+    background-color: #e3f2fd;
+    color: #1e88e5;
+    padding: 6px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: #1e88e5;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #eee;
+    color: #666;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.btn-cancel:hover {
+    background-color: #ddd;
+}
