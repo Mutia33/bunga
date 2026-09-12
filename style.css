@@ -1,17 +1,21 @@
-/* Mengimpor font Lobster Two dari Google Fonts */
+/* Mengimpor font Lobster Two & Poppins dari Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;600&display=swap');
 
 :root {
-    --butter-yellow: #FFE566;       /* Kuning butter lebih berani & menyala */
-    --butter-yellow-light: #FFF599; /* Kuning terang untuk transisi */
-    --sage-green: #8DAA68;          /* Sage green lebih pop & segar */
-    --sage-green-light: #A3C97A;    /* Sage terang untuk gradasi */
-    --sage-green-dark: #ff79bc;     /* Sage pekat untuk teks & hover */
-    --text-dark: #92cf83;
+    --butter-yellow: #FFE566;
+    --butter-yellow-light: #FFF599;
+    --sage-green: #8DAA68;
+    --sage-green-light: #A3C97A;
+    --sage-green-dark: #ff79bc;
+    --text-dark: #2d4029;
+}
+
+/* Base Body Layout menggunakan Flexbox untuk Sticky Footer */
+html {
+    height: 100%;
 }
 
 body {
-    /* Background gambar jernih HD */
     background: url('https://i.pinimg.com/736x/66/f9/fd/66f9fd3883853908aaa0fa061ebd822d.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     color: var(--text-dark);
@@ -19,6 +23,8 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Mengubah font semua judul menjadi Lobster Two */
@@ -56,9 +62,37 @@ nav a:hover {
     color: var(--sage-green-dark);
 }
 
+/* Main Container Wrappers */
+.main-wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
 .container {
     width: 85%;
+    max-width: 1100px;
     margin: 30px auto;
+    flex: 1 0 auto;
+}
+
+/* Box Keranjang Belanja */
+.container-keranjang {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.container-keranjang h2 {
+    color: var(--sage-green-dark);
+    margin-top: 0;
+    text-align: center;
 }
 
 /* Box untuk Halaman Utama / Hero */
@@ -78,7 +112,7 @@ nav a:hover {
     font-size: 32px;
 }
 
-/* Box Umum untuk Halaman Lain (Jenis Bunga, Galeri, Keranjang, dll.) */
+/* Box Umum untuk Halaman Lain */
 .section-box {
     background: rgba(255, 255, 255, 0.92) !important;
     padding: 30px 40px;
@@ -123,7 +157,45 @@ nav a:hover {
     border-radius: 10px;
 }
 
-/* Tombol dengan warna Sage Green yang harmonis */
+/* Styling Tabel Keranjang Belanja */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #f2cfd7;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #ffe6ec;
+    color: #d86b89;
+    font-weight: bold;
+}
+
+.input-qty {
+    width: 50px;
+    text-align: center;
+    padding: 6px;
+    border: 1px solid #f2cfd7;
+    border-radius: 6px;
+}
+
+.checkout-container {
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* Styling Tombol Akses & Aksi */
 .btn {
     display: inline-block;
     background-color: var(--sage-green);
@@ -144,13 +216,60 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
+.btn-hapus {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-hapus:hover {
+    background-color: #d32f2f;
+}
+
+.btn-edit {
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #e69500;
+}
+
+.btn-beli {
+    background-color: #d63384;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-beli:hover {
+    background-color: #b0236c;
+}
+
+/* Footer selalu di bagian paling bawah */
 footer {
     text-align: center;
     padding: 20px;
     background-color: rgba(255, 253, 240, 0.92);
-    margin-top: 40px;
+    margin-top: auto;
     font-size: 14px;
     color: var(--text-dark);
+    flex-shrink: 0;
 }
 
 /* ==========================================
@@ -253,8 +372,6 @@ footer {
     text-decoration: underline;
 }
 
-/* Style Tombol Kembali */
-/* Style Tombol Kembali di Tengah */
 .btn-back {
     display: inline-block;
     margin-top: 15px;
@@ -269,7 +386,6 @@ footer {
     text-decoration: underline;
 }
 
-/* Clearfix agar tata letak judul tidak berantakan */
 .clear {
     clear: both;
 }
@@ -341,7 +457,6 @@ footer {
     font-family: 'Poppins', Arial, sans-serif;
 }
 
-/* Sidebar Navigasi */
 .sidebar {
     width: 240px;
     background-color: #ffffff;
@@ -394,7 +509,6 @@ footer {
     background-color: #ffe6e6;
 }
 
-/* Konten Utama */
 .main-content {
     margin-left: 240px;
     padding: 35px;
@@ -413,7 +527,6 @@ footer {
     margin-top: 5px;
 }
 
-/* Card Statistik */
 .card-container {
     display: flex;
     gap: 20px;
@@ -449,30 +562,32 @@ footer {
     box-shadow: 0 5px 15px rgba(0,0,0,0.04);
 }
 
-/* Perbaikan Tampilan Tabel Admin */
 .admin-table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100% !important;
+    border-collapse: collapse !important;
     margin-top: 15px;
     background: #ffffff;
+    border: 1px solid #f2cfd7 !important;
+}
+
+.admin-table th, 
+.admin-table td {
+    border: 1px solid #f8d7da !important;
+    padding: 12px 15px !important;
+    vertical-align: middle !important;
 }
 
 .admin-table th {
-    background-color: #fff0f3;
-    color: #d86b89;
-    padding: 12px;
+    background-color: #ffe6ec !important;
+    color: #d86b89 !important;
+    font-weight: bold !important;
     text-align: left;
-    font-size: 14px;
 }
 
 .admin-table td {
-    padding: 12px;
-    border-bottom: 1px solid #f2cfd7;
-    vertical-align: middle;
     color: #444;
 }
 
-/* Membatasi ukuran thumbnail foto agar tidak merusak tabel */
 .img-thumb {
     width: 50px;
     height: 50px;
@@ -482,31 +597,6 @@ footer {
     background-color: #eee;
 }
 
-/* ==========================================
-   PERBAIKAN TABEL & TOMBOL AKSI ADMIN
-   ========================================== */
-
-/* Garis pembatas antar kolom dan baris */
-.admin-table {
-    border-collapse: collapse !important;
-    width: 100% !important;
-    border: 1px solid #f2cfd7 !important;
-}
-
-.admin-table th, 
-.admin-table td {
-    border: 1px solid #f8d7da !important; /* Garis pembatas vertikal & horizontal */
-    padding: 12px 15px !important;
-    vertical-align: middle !important;
-}
-
-.admin-table th {
-    background-color: #ffe6ec !important; /* Header pink pastel lembut */
-    color: #d86b89 !important;
-    font-weight: bold !important;
-}
-
-/* Mengubah link Edit & Hapus menjadi Tombol Pastel */
 .admin-table td a.btn-edit {
     display: inline-block !important;
     background-color: #e3f2fd !important;
@@ -578,9 +668,9 @@ footer {
     text-decoration: none !important;
     font-size: 13px !important;
     font-weight: 600 !important;
-    margin: 15px auto 0 auto !important; /* Tambahkan auto kiri-kanan */
+    margin: 15px auto 0 auto !important;
     transition: all 0.2s ease !important;
-    width: fit-content !important;       /* Kunci lebar tombol */
+    width: fit-content !important;
 }
 
 .btn-back-home:hover {

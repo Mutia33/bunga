@@ -14,7 +14,7 @@
         <a href="index.php">Home</a>
         <a href="galeri.php">Galeri Buket</a>
         <a href="keranjang.php">Keranjang</a>
-        <a href="login.php" class="btn-login">Login</a>
+        <a href="login.php" class="btn-login">Login/Account</a>
     </nav>
 </header>
 
