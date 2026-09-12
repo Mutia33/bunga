@@ -14,7 +14,7 @@
         <a href="index.php">Home</a>
         <a href="galeri.php">Galeri Buket</a>
         <a href="keranjang.php">Keranjang</a>
-        <a href="login.php">Login/Account</a>
+        <a href="login.php" class="btn-login">Login</a>
     </nav>
 </header>
 
@@ -26,6 +26,7 @@
         <p>Temukan buket bunga impianmu dan sampaikan perasaanmu lewat karya seni buatan tangan yang tak tergerus waktu.</p>
         <a href="katalog.php" class="btn">Lihat Katalog Bunga</a>
     </div>
+</div>
 
 <footer>
     <p>&copy; 2026 ⊹₊˚‧︵‿₊୨RYACREAFT୧₊‿︵‧˚₊⊹ Made with 🌷 and Pastel Colors.</p>

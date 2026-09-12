@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Keranjang Belanja - Bloom & Co.</title>
+    <title>Keranjang Belanja - RYACREAFT</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .container-keranjang {

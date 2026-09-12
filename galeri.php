@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Galeri Buket - Bloom & Co.</title>
+    <title>Galeri Buket - RYACREAFT</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .qty-container {
