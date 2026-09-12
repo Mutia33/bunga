@@ -449,43 +449,97 @@ footer {
     box-shadow: 0 5px 15px rgba(0,0,0,0.04);
 }
 
-/* Styling Tambahan Produk Admin */
-.badge-kategori {
-    background-color: #fce4ec;
+/* Perbaikan Tampilan Tabel Admin */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: #ffffff;
+}
+
+.admin-table th {
+    background-color: #fff0f3;
     color: #d86b89;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.btn-edit {
-    background-color: #e3f2fd;
-    color: #1e88e5;
-    padding: 6px 14px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: bold;
-    margin-right: 5px;
-    transition: 0.3s;
-}
-
-.btn-edit:hover {
-    background-color: #1e88e5;
-    color: white;
-}
-
-.btn-cancel {
-    background-color: #eee;
-    color: #666;
-    padding: 10px 20px;
-    border-radius: 12px;
-    text-decoration: none;
+    padding: 12px;
+    text-align: left;
     font-size: 14px;
-    display: inline-block;
 }
 
-.btn-cancel:hover {
-    background-color: #ddd;
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f2cfd7;
+    vertical-align: middle;
+    color: #444;
+}
+
+/* Membatasi ukuran thumbnail foto agar tidak merusak tabel */
+.img-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    background-color: #eee;
+}
+
+/* ==========================================
+   PERBAIKAN TABEL & TOMBOL AKSI ADMIN
+   ========================================== */
+
+/* Garis pembatas antar kolom dan baris */
+.admin-table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    border: 1px solid #f2cfd7 !important;
+}
+
+.admin-table th, 
+.admin-table td {
+    border: 1px solid #f8d7da !important; /* Garis pembatas vertikal & horizontal */
+    padding: 12px 15px !important;
+    vertical-align: middle !important;
+}
+
+.admin-table th {
+    background-color: #ffe6ec !important; /* Header pink pastel lembut */
+    color: #d86b89 !important;
+    font-weight: bold !important;
+}
+
+/* Mengubah link Edit & Hapus menjadi Tombol Pastel */
+.admin-table td a.btn-edit {
+    display: inline-block !important;
+    background-color: #e3f2fd !important;
+    color: #1976d2 !important;
+    padding: 6px 14px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin-right: 5px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+.admin-table td a.btn-edit:hover {
+    background-color: #1976d2 !important;
+    color: #ffffff !important;
+}
+
+.admin-table td a.btn-delete {
+    display: inline-block !important;
+    background-color: #ffebee !important;
+    color: #d32f2f !important;
+    padding: 6px 14px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+.admin-table td a.btn-delete:hover {
+    background-color: #d32f2f !important;
+    color: #ffffff !important;
 }
