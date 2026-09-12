@@ -24,7 +24,6 @@
         <h3>"Crafting sweet memories into soft, everlasting petals."</h3>
         <p>Nama RyaCraft melambangkan komitmen kami dalam menghadirkan produk handicraft yang tidak hanya indah dipandang, tetapi juga memiliki sentuhan kelembutan dan nilai emosional yang tinggi. Tidak seperti bunga segar pada umumnya, buket dari RyaCraft dirancang untuk bertahan selamanya sebagai pengingat momen-momen manismu.</p>
         <p>Temukan buket bunga impianmu dan sampaikan perasaanmu lewat karya seni buatan tangan yang tak tergerus waktu.</p>
-        <a href="katalog.php" class="btn">Lihat Katalog Bunga</a>
     </div>
 </div>
 
