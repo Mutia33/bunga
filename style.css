@@ -994,3 +994,274 @@ footer {
     background-color: #fff9c4 !important;
     transform: translateY(-2px) !important;
 }
+
+/* ==========================================
+   STYLING HALAMAN KELOLA PRODUK ADMIN
+   ========================================== */
+
+.admin-body {
+    display: flex !important;
+    background: #a04961 !important;
+    min-height: 100vh !important;
+    color: #333 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Poppins', Arial, sans-serif !important;
+}
+
+/* SIDEBAR KIRI */
+.sidebar {
+    width: 240px !important;
+    background: #ffffff !important;
+    padding: 30px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.sidebar h2 {
+    color: #d8a7b1 !important;
+    font-size: 20px !important;
+    margin-bottom: 35px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.sidebar a {
+    text-decoration: none !important;
+    color: #666 !important;
+    padding: 12px 18px !important;
+    border-radius: 12px !important;
+    margin-bottom: 10px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    display: block !important;
+    transition: 0.3s !important;
+}
+
+.sidebar a:hover, 
+.sidebar a.active {
+    background: #fff0f3 !important;
+    color: #d8a7b1 !important;
+    font-weight: 600 !important;
+}
+
+.sidebar a.logout {
+    color: #e63946 !important;
+    margin-top: auto !important;
+}
+
+/* KONTEN UTAMA KANAN */
+.main-content {
+    flex: 1 !important;
+    padding: 35px 40px !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* BANNER ATAS */
+.banner {
+    background: #fdf5f6 !important;
+    padding: 25px !important;
+    border-radius: 20px !important;
+    text-align: center !important;
+    margin-bottom: 25px !important;
+}
+
+.banner h1 {
+    color: #5a3d46 !important;
+    font-size: 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin: 0 !important;
+}
+
+.banner p {
+    color: #888 !important;
+    font-size: 13px !important;
+    margin-top: 5px !important;
+}
+
+/* ALERT NOTIFIKASI */
+.alert-success {
+    background: #e8f5e9 !important;
+    color: #2e7d32 !important;
+    padding: 12px 20px !important;
+    border-radius: 12px !important;
+    margin-bottom: 20px !important;
+    font-size: 14px !important;
+}
+
+/* CONTAINER CARD */
+.card-box {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 25px !important;
+    margin-bottom: 25px !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+}
+
+.card-box h3 {
+    color: #5a3d46 !important;
+    font-size: 16px !important;
+    margin-bottom: 18px !important;
+    margin-top: 0 !important;
+}
+
+/* TABEL PRODUK */
+.table-produk {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 14px !important;
+}
+
+.table-produk th {
+    background: #ffe6ea !important;
+    color: #5a3d46 !important;
+    padding: 14px !important;
+    text-align: left !important;
+}
+
+.table-produk th:first-child {
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.table-produk th:last-child {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+.table-produk td {
+    padding: 14px !important;
+    border-bottom: 1px solid #f5f5f5 !important;
+    color: #555 !important;
+    vertical-align: middle !important;
+}
+
+.img-thumb {
+    width: 55px !important;
+    height: 55px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
+
+.btn-hapus {
+    color: #e63946 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+}
+
+.text-empty {
+    text-align: center !important;
+    color: #888 !important;
+    padding: 25px !important;
+}
+
+/* FORM INPUT */
+.form-group {
+    margin-bottom: 15px !important;
+}
+
+.form-group label {
+    display: block !important;
+    font-size: 13px !important;
+    color: #666 !important;
+    margin-bottom: 6px !important;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100% !important;
+    padding: 12px 15px !important;
+    border: 1px solid #ffd1dc !important;
+    border-radius: 12px !important;
+    outline: none !important;
+    background: #fffdfd !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #d8a7b1 !important;
+}
+
+.btn-simpan {
+    background: #d8a7b1 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 25px !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+.btn-simpan:hover {
+    background: #c896a0 !important;
+}
+
+/* ==========================================
+   STYLING GRID & KARTU PRODUK GALERI
+   ========================================== */
+
+/* Mengatur wadah agar produk berderet menyamping */
+.product-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(107, 124, 94, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+/* TAMBAHAN STYLING ADMIN PRODUK & EDIT */
+.badge-kategori {
+    background: #fff0f3 !important;
+    color: #d8a7b1 !important;
+    padding: 5px 10px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+.btn-edit {
+    color: #3b82f6 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    margin-right: 12px !important;
+}
+
+.btn-edit:hover {
+    text-decoration: underline !important;
+}
+
+.table-produk td {
+    padding: 16px 14px !important;
+}
