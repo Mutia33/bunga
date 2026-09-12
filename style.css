@@ -760,3 +760,237 @@ footer {
 .register-link a:hover {
     text-decoration: underline !important;
 }
+
+/* ==========================================
+   STYLING DASHBOARD ADMIN AESTHETIC PASTEL
+   ========================================== */
+
+.admin-body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: linear-gradient(135deg, #b05574 0%, #7d334c 100%) !important;
+    font-family: 'Poppins', sans-serif !important;
+    min-height: 100vh !important;
+}
+
+.admin-container {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    box-sizing: border-box !important;
+}
+
+/* Sidebar Styling */
+.admin-sidebar {
+    width: 250px !important;
+    background: #ffffff !important;
+    padding: 25px 20px !important;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05) !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.sidebar-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 20px !important;
+    color: #d86b89 !important;
+    margin-bottom: 35px !important;
+}
+
+.sidebar-brand h2 {
+    margin: 0 !important;
+    font-size: 20px !important;
+}
+
+.sidebar-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+}
+
+.menu-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 12px 18px !important;
+    color: #666 !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: #fff0f4 !important;
+    color: #d86b89 !important;
+    font-weight: 600 !important;
+}
+
+.menu-item.logout {
+    margin-top: auto !important;
+    color: #e57373 !important;
+}
+
+.menu-item.logout:hover {
+    background-color: #ffebee !important;
+}
+
+/* Main Content Area */
+.admin-content {
+    flex: 1 !important;
+    width: calc(100% - 250px) !important; /* Mengisi seluruh sisa layar kanan */
+    max-width: none !important;            /* Menghapus batasan lebar lama */
+    padding: 35px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 25px !important;
+    box-sizing: border-box !important;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    background: #fff6f8 !important;
+    border: 2px solid #f9d5e0 !important;
+    border-radius: 20px !important;
+    padding: 25px 30px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+}
+
+.banner-text h1 {
+    margin: 0 0 8px 0 !important;
+    color: #8c3b53 !important;
+    font-size: 24px !important;
+}
+
+.banner-text p {
+    margin: 0 !important;
+    color: #7d5b65 !important;
+    font-size: 14px !important;
+}
+
+.banner-decoration {
+    font-size: 45px !important;
+}
+
+/* Stats Cards Grid */
+.stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+}
+
+.stat-card {
+    background: #ffffff !important;
+    border-radius: 18px !important;
+    padding: 20px 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1) !important;
+}
+
+.stat-icon {
+    font-size: 32px !important;
+    background: #fafaa8 !important;
+    width: 55px !important;
+    height: 55px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 14px !important;
+}
+
+.card-pink .stat-icon { background: #ffe4ec !important; }
+.card-green .stat-icon { background: #e8f5e9 !important; }
+.card-yellow .stat-icon { background: #fffde7 !important; }
+
+.stat-info h3 {
+    margin: 0 0 4px 0 !important;
+    font-size: 13px !important;
+    color: #888 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.stat-number {
+    margin: 0 !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+    color: #859d64 !important;
+}
+
+/* Quick Action Area */
+.quick-actions-card {
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 25px 30px !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06) !important;
+}
+
+.quick-actions-card h2 {
+    margin: 0 0 5px 0 !important;
+    color: #d86b89 !important;
+    font-size: 18px !important;
+}
+
+.quick-actions-card p {
+    margin: 0 0 20px 0 !important;
+    color: #777 !important;
+    font-size: 14px !important;
+}
+
+.action-buttons {
+    display: flex !important;
+    gap: 15px !important;
+    flex-wrap: wrap !important;
+}
+
+.btn-action {
+    padding: 12px 20px !important;
+    border-radius: 25px !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    transition: all 0.2s ease !important;
+}
+
+.btn-pastel-pink {
+    background-color: #ffe4ec !important;
+    color: #d86b89 !important;
+}
+
+.btn-pastel-pink:hover {
+    background-color: #ffd1dc !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-pastel-green {
+    background-color: #e8f5e9 !important;
+    color: #4caf50 !important;
+}
+
+.btn-pastel-green:hover {
+    background-color: #c8e6c9 !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-pastel-yellow {
+    background-color: #fffde7 !important;
+    color: #fbc02d !important;
+}
+
+.btn-pastel-yellow:hover {
+    background-color: #fff9c4 !important;
+    transform: translateY(-2px) !important;
+}

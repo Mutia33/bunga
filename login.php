@@ -52,7 +52,7 @@ if (isset($_POST['login'])) {
 
     <div class="login-wrapper">
         <div class="login-box">
-            <h2>🌸 Bloom & Co. 🌸</h2>
+            <h2>︵‿₊୨RYACREAFT୧₊‿︵</h2>
 
             <?php if (!empty($error)): ?>
                 <div class="error-msg">

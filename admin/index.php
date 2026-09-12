@@ -2,17 +2,18 @@
 session_start();
 include '../koneksi.php';
 
-// Proteksi Halaman: Hanya Role Admin yang Bisa Masuk
+// Cek session login & role admin
 if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login.php");
     exit();
 }
 
-// Mengambil Data Ringkasan untuk Dashboard
-$query_user = mysqli_query($koneksi, "SELECT COUNT(*) AS total_user FROM users WHERE role = 'user'");
-$data_user  = mysqli_fetch_assoc($query_user);
+// Ambil data statistik dinamis dari database
+$query_users = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM users WHERE role = 'user'");
+$total_users = mysqli_fetch_assoc($query_users)['total'];
 
-// Kamu bisa tambah query lain di sini nanti (misal: total produk atau pesanan)
+$query_produk = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM produk");
+$total_produk = $query_produk ? mysqli_fetch_assoc($query_produk)['total'] : 0;
 ?>
 
 <!DOCTYPE html>
@@ -25,45 +26,88 @@ $data_user  = mysqli_fetch_assoc($query_user);
 </head>
 <body class="admin-body">
 
-    <!-- Sidebar Admin -->
-    <div class="sidebar">
-        <h2>🌸 Admin Bloom</h2>
-        <ul>
-            <li><a href="index.php" class="active">Dashboard</a></li>
-            <li><a href="produk.php">Kelola Produk</a></li>
-            <li><a href="pesanan.php">Kelola Pesanan</a></li>
-            <li><a href="users.php">Data Pelanggan</a></li>
-            <li><a href="../logout.php" class="btn-logout">Logout</a></li>
-        </ul>
-    </div>
-
-    <!-- Konten Utama Dashboard -->
-    <div class="main-content">
-        <header>
-            <h1>Selamat Datang, <?php echo htmlspecialchars($_SESSION['nama']); ?>! 👋</h1>
-            <p>Halaman pusat kendali toko bunga Bloom & Co.</p>
-        </header>
-
-        <!-- Kartu Ringkasan (Statistik) -->
-        <div class="card-container">
-            <div class="card">
-                <h3>Total Pelanggan</h3>
-                <p class="card-count"><?php echo $data_user['total_user']; ?></p>
+    <div class="admin-container">
+        <!-- Sidebar Navigation -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <span>🌸</span>
+                <h2>Admin Bloom</h2>
             </div>
-            <div class="card">
-                <h3>Total Produk</h3>
-                <p class="card-count">0</p>
-            </div>
-            <div class="card">
-                <h3>Pesanan Baru</h3>
-                <p class="card-count">0</p>
-            </div>
-        </div>
+            
+            <nav class="sidebar-menu">
+                <a href="index.php" class="menu-item active">
+                    <span class="icon">🎀</span> Dashboard
+                </a>
+                <a href="produk.php" class="menu-item">
+                    <span class="icon">🌷</span> Kelola Produk
+                </a>
+                <a href="pesanan.php" class="menu-item">
+                    <span class="icon">🛍️</span> Kelola Pesanan
+                </a>
+                <a href="pelanggan.php" class="menu-item">
+                    <span class="icon">👥</span> Data Pelanggan
+                </a>
+                <a href="../logout.php" class="menu-item logout">
+                    <span class="icon">🚪</span> Logout
+                </a>
+            </nav>
+        </aside>
 
-        <div class="quick-info">
-            <h3>Aksi Cepat</h3>
-            <p>Pilih menu di sebelah kiri untuk mulai mengelola produk atau melihat pesanan masuk.</p>
-        </div>
+        <!-- Main Content Area -->
+        <main class="admin-content">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="banner-text">
+                    <h1>Selamat Datang, <?php echo htmlspecialchars($_SESSION['nama'] ?? 'Admin Toko'); ?>! 👋✨</h1>
+                    <p>Halaman pusat kendali toko bunga Bloom & Co. Yuk cek performa toko hari ini!</p>
+                </div>
+                <div class="banner-decoration">💐</div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card card-pink">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <h3>Total Pelanggan</h3>
+                        <p class="stat-number"><?php echo $total_users; ?></p>
+                    </div>
+                </div>
+
+                <div class="stat-card card-green">
+                    <div class="stat-icon">🌷</div>
+                    <div class="stat-info">
+                        <h3>Total Produk</h3>
+                        <p class="stat-number"><?php echo $total_produk; ?></p>
+                    </div>
+                </div>
+
+                <div class="stat-card card-yellow">
+                    <div class="stat-icon">📑</div>
+                    <div class="stat-info">
+                        <h3>Pesanan Baru</h3>
+                        <p class="stat-number">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Action Area -->
+            <div class="quick-actions-card">
+                <h2>Aksi Cepat ⚡</h2>
+                <p>Pilih menu di bawah ini untuk langsung mengelola toko kamu:</p>
+                <div class="action-buttons">
+                    <a href="produk.php" class="btn-action btn-pastel-pink">
+                        ➕ Tambah Produk Bunga
+                    </a>
+                    <a href="pesanan.php" class="btn-action btn-pastel-green">
+                        📦 Cek Pesanan Masuk
+                    </a>
+                    <a href="../index.php" target="_blank" class="btn-action btn-pastel-yellow">
+                        🌐 Lihat Tampilan Toko
+                    </a>
+                </div>
+            </div>
+        </main>
     </div>
 
 </body>
