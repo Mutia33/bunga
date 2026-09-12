@@ -5,37 +5,33 @@ include 'koneksi.php';
 $error = "";
 
 if (isset($_POST['login'])) {
-    $email    = mysqli_real_escape_string($koneksi, $_POST['email']);
+    $username = mysqli_real_escape_string($koneksi, $_POST['username']);
     $password = $_POST['password'];
 
-    $query  = "SELECT * FROM users WHERE email = '$email'";
-    $result = mysqli_query($koneksi, $query);
-
-    if (mysqli_num_rows($result) === 1) {
-        $row = mysqli_fetch_assoc($result);
-
-        if ($password === $row['password']) {
-            $_SESSION['login']    = true;
-            $_SESSION['id_user']  = $row['id_user'];
-            $_SESSION['nama']     = $row['nama'];
-            $_SESSION['role']     = $row['role'];
+    // Cari ke kolom email atau nama (karena kolom username tidak ada di database)
+    $query = mysqli_query($koneksi, "SELECT * FROM users WHERE email = '$username' OR nama = '$username'");
+    
+    if ($query && mysqli_num_rows($query) === 1) {
+        $row = mysqli_fetch_assoc($query);
+        
+        // Cek password (bisa verifikasi hash atau teks biasa)
+        if (password_verify($password, $row['password']) || $password === $row['password']) {
+            $_SESSION['login'] = true;
+            $_SESSION['id_user'] = $row['id_user']; // Menggunakan id_user sesuai database
+            $_SESSION['nama'] = $row['nama'];
+            $_SESSION['role'] = $row['role'];
 
             if ($row['role'] === 'admin') {
                 header("Location: admin/index.php");
-                exit();
             } else {
-                if (isset($_GET['redirect']) && $_GET['redirect'] === 'checkout') {
-                    header("Location: checkout.php");
-                } else {
-                    header("Location: index.php");
-                }
-                exit();
+                header("Location: index.php");
             }
+            exit();
         } else {
             $error = "Password yang kamu masukkan salah!";
         }
     } else {
-        $error = "Email tidak terdaftar!";
+        $error = "Email atau Nama tidak ditemukan!";
     }
 }
 ?>
@@ -46,40 +42,40 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Bloom & Co.</title>
-    <!-- Sesuaikan lokasi file style.css kamu di bawah ini -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="login-body">
 
-<div class="login-wrapper">
-    <div class="login-box">
-        <h2>🌸 Bloom & Co. 🌸</h2>
+    <div class="login-card">
+        <h2>Selamat Datang 🌸</h2>
 
-        <?php if ($error != ""): ?>
-            <div class="error-msg"><?php echo $error; ?></div>
+        <?php if (!empty($error)): ?>
+            <p class="login-error-msg">
+                <?php echo $error; ?>
+            </p>
         <?php endif; ?>
 
-        <form action="" method="POST">
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="Masukkan email kamu..." required>
+        <form action="login.php" method="POST">
+            <div class="form-group-login">
+                <label>Username / Email</label>
+                <input type="text" name="username" required placeholder="Masukkan username atau email">
             </div>
 
-            <div class="form-group">
+            <div class="form-group-login">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Masukkan password..." required>
+                <input type="password" name="password" required placeholder="Masukkan password">
             </div>
 
-            <button type="submit" name="login" class="btn-login-submit">Masuk Sekarang</button>
+            <button type="submit" name="login" class="btn-submit-login">Masuk</button>
         </form>
 
-        <div class="footer-text">
+        <div class="register-link">
             Belum punya akun? <a href="register.php">Daftar di sini</a>
+            <a href="index.php" class="btn-back-home">
+                &larr; Kembali ke Beranda
+            </a>
         </div>
-         <a href="index.php" class="btn-back">Kembali ke Beranda</a>
-        <div class="clear"></div>
     </div>
-</div>
 
 </body>
 </html>

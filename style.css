@@ -12,7 +12,7 @@
 
 body {
     /* Background gambar jernih HD */
-    background: url('https://i.pinimg.com/736x/59/36/b7/5936b7b975cc1f974441e75eabca95b4.jpg') no-repeat center center fixed !important;
+    background: url('https://i.pinimg.com/736x/66/f9/fd/66f9fd3883853908aaa0fa061ebd822d.jpg') no-repeat center center fixed !important;
     background-size: cover !important;
     color: var(--text-dark);
     font-family: 'Poppins', sans-serif;
@@ -542,4 +542,131 @@ footer {
 .admin-table td a.btn-delete:hover {
     background-color: #d32f2f !important;
     color: #ffffff !important;
+}
+
+/* ==========================================
+   STYLING HALAMAN LOGIN (CENTERED & PASTEL)
+   ========================================== */
+
+.login-body {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    background: linear-gradient(135deg, #b05574 0%, #7d334c 100%) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.login-card {
+    background: #ffffff !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 35px 30px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
+
+.btn-back-home {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    color: #d86b89 !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin: 15px auto 0 auto !important; /* Tambahkan auto kiri-kanan */
+    transition: all 0.2s ease !important;
+    width: fit-content !important;       /* Kunci lebar tombol */
+}
+
+.btn-back-home:hover {
+    color: #b05574 !important;
+    transform: translateX(-3px) !important;
+}
+
+.login-card h2 {
+    color: #d86b89 !important;
+    margin: 0 0 20px 0 !important;
+    text-align: center !important;
+    font-size: 24px !important;
+}
+
+.login-error-msg {
+    color: #d32f2f !important;
+    background: #ffebee !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    margin-bottom: 15px !important;
+    border: 1px solid #ffcdd2 !important;
+}
+
+.form-group-login {
+    margin-bottom: 18px !important;
+    text-align: left !important;
+}
+
+.form-group-login label {
+    display: block !important;
+    font-size: 14px !important;
+    color: #555 !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+}
+
+.form-group-login input {
+    width: 100% !important;
+    padding: 12px !important;
+    border: 1px solid #f2cfd7 !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    transition: border-color 0.2s !important;
+    background-color: #fcf8f9 !important;
+}
+
+.form-group-login input:focus {
+    border-color: #d86b89 !important;
+    background-color: #fff !important;
+}
+
+.btn-submit-login {
+    width: 100% !important;
+    background-color: #98b075 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px !important;
+    border-radius: 25px !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    margin-top: 10px !important;
+    transition: background 0.2s !important;
+}
+
+.btn-submit-login:hover {
+    background-color: #859d64 !important;
+}
+
+.register-link {
+    text-align: center !important;
+    margin-top: 20px !important;
+    font-size: 13px !important;
+    color: #777 !important;
+}
+
+.register-link a {
+    color: #d86b89 !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+}
+
+.register-link a:hover {
+    text-decoration: underline !important;
 }
