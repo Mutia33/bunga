@@ -15,6 +15,7 @@
         <a href="katalog.php">Jenis Bunga</a>
         <a href="galeri.php">Galeri Buket</a>
         <a href="keranjang.php">Keranjang</a>
+        <a href="login.php" class="btn-login">Login</a>
     </nav>
 </header>
 
