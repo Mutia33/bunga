@@ -1,3 +1,10 @@
+<?php
+// 1. Hubungkan ke database
+include 'koneksi.php';
+
+// 2. Ambil data produk dari database
+$query = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY id_produk DESC");
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -101,110 +108,39 @@
     </div>
     
     <div class="product-grid">
-        <!-- Produk 1 -->
-        <div class="product-card">
-            <img src="img/1.jpeg" alt="Galeri 1">
-            <h4>Single Daisy Bloom</h4>
-            <p>Rp.5.000</p>
-            <button id="btnAwal1" onclick="tampilkanInput('qtyBox1', 'btnAwal1')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox1" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty1" value="1" min="1">
-                <button onclick="masukkanKeranjang('Single Daisy Bloom', 'qty1')" class="btn">Masukkan Keranjang</button>
+        <?php 
+        if ($query && mysqli_num_rows($query) > 0):
+            while ($row = mysqli_fetch_assoc($query)): 
+                $id = $row['id_produk'];
+        ?>
+            <!-- Produk Dinamis dari Database -->
+            <div class="product-card">
+                <img src="img/<?php echo $row['foto']; ?>" alt="<?php echo $row['nama_produk']; ?>">
+                <h4><?php echo $row['nama_produk']; ?></h4>
+                <p>
+                    <?php 
+                     if (is_numeric($row['harga'])) {
+                        echo "Rp " . number_format($row['harga'], 0, ',', '.');
+                        } else {
+                            echo $row['harga']; 
+                        }
+                    ?>
+                </p>
+                
+                <button id="btnAwal<?php echo $id; ?>" onclick="tampilkanInput('qtyBox<?php echo $id; ?>', 'btnAwal<?php echo $id; ?>')" class="btn">🛒 Tambah ke Keranjang</button>
+                
+                <div id="qtyBox<?php echo $id; ?>" class="qty-container">
+                    <label>Jumlah:</label>
+                    <input type="number" id="qty<?php echo $id; ?>" value="1" min="1">
+                    <button onclick="masukkanKeranjang('<?php echo addslashes($row['nama_produk']); ?>', 'qty<?php echo $id; ?>')" class="btn">Masukkan Keranjang</button>
+                </div>
             </div>
-        </div>
-
-        <!-- Produk 2 -->
-        <div class="product-card">
-            <img src="img/2.jpeg" alt="Galeri 2">
-            <h4>Single Lavender Bloom</h4>
-            <p>Rp.7.000</p>
-            <button id="btnAwal2" onclick="tampilkanInput('qtyBox2', 'btnAwal2')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox2" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty2" value="1" min="1">
-                <button onclick="masukkanKeranjang('Single Lavender Bloom', 'qty2')" class="btn">Masukkan Keranjang</button>
-            </div>
-        </div>
-
-        <!-- Produk 3 -->
-        <div class="product-card">
-            <img src="img/3.jpeg" alt="Galeri 3">
-            <h4>Single Lily Bloom</h4>
-            <p>Rp.15.000</p>
-            <button id="btnAwal3" onclick="tampilkanInput('qtyBox3', 'btnAwal3')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox3" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty3" value="1" min="1">
-                <button onclick="masukkanKeranjang('Single Lily Bloom', 'qty3')" class="btn">Masukkan Keranjang</button>
-            </div>
-        </div>
-
-        <!-- Produk 4 -->
-        <div class="product-card">
-            <img src="img/4.jpeg" alt="Galeri 4">
-            <h4>Single Sakura Bloom</h4>
-            <p>Rp.5.000</p>
-            <button id="btnAwal4" onclick="tampilkanInput('qtyBox4', 'btnAwal4')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox4" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty4" value="1" min="1">
-                <button onclick="masukkanKeranjang('Single Sakura Bloom', 'qty4')" class="btn">Masukkan Keranjang</button>
-            </div>
-        </div>
-
-        <!-- Produk 5 -->
-        <div class="product-card">
-            <img src="img/5.jpeg" alt="Galeri 5">
-            <h4>Single Tulip Bloom</h4>
-            <p>Rp.12.000</p>
-            <button id="btnAwal5" onclick="tampilkanInput('qtyBox5', 'btnAwal5')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox5" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty5" value="1" min="1">
-                <button onclick="masukkanKeranjang('Single Tulip Bloom', 'qty5')" class="btn">Masukkan Keranjang</button>
-            </div>
-        </div>
-
-        <!-- Produk 6 -->
-        <div class="product-card">
-            <img src="img/6.jpeg" alt="Galeri 6">
-            <h4>Lavender & Mini Bloom Stem</h4>
-            <p>Rp.5.000</p>
-            <button id="btnAwal6" onclick="tampilkanInput('qtyBox6', 'btnAwal6')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox6" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty6" value="1" min="1">
-                <button onclick="masukkanKeranjang('Lavender & Mini Bloom Stem', 'qty6')" class="btn">Masukkan Keranjang</button>
-            </div>
-        </div>
-
-        <!-- Produk 7 -->
-        <div class="product-card">
-            <img src="img/7.jpeg" alt="Galeri 7">
-            <h4>Lily Heart Bouquet</h4>
-            <p>Kustom Buket Sesuai Keinginanmu!
-Komposisi bunga, jumlah tangkai, dan warna pada buket ini bersifat kustom. Harga akhir akan disesuaikan dengan total request pesananmu.</p>
-            <button id="btnAwal7" onclick="tampilkanInput('qtyBox7', 'btnAwal7')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox7" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty7" value="1" min="1">
-                <button onclick="masukkanKeranjang('Lily Heart Bouquet', 'qty7')" class="btn">Masukkan Keranjang</button>
-            </div>
-        </div>
-
-        <!-- Produk 8 -->
-        <div class="product-card">
-            <img src="img/8.jpeg" alt="Galeri 8">
-            <h4>Playful Spiral Daisy Bouquet</h4>
-            <p>Rp.20.000</p>
-            <button id="btnAwal8" onclick="tampilkanInput('qtyBox8', 'btnAwal8')" class="btn">🛒 Tambah ke Keranjang</button>
-            <div id="qtyBox8" class="qty-container">
-                <label>Jumlah:</label>
-                <input type="number" id="qty8" value="1" min="1">
-                <button onclick="masukkanKeranjang('Playful Spiral Daisy Bouquet', 'qty8')" class="btn">Masukkan Keranjang</button>
-            </div>
-        </div>
+        <?php 
+            endwhile;
+        else:
+        ?>
+            <p style="grid-column: 1/-1; text-align: center; color: #777;">Belum ada buket bunga yang ditambahkan.</p>
+        <?php endif; ?>
     </div>
 </div>
 
