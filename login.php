@@ -21,16 +21,15 @@ if (isset($_POST['login'])) {
             $_SESSION['nama'] = $row['nama'];
             $_SESSION['role'] = $row['role'];
 
-            // Simpan penanda ke localStorage lewat JavaScript untuk sinkronisasi cart/checkout
+            // Jika user biasa login, kita arahkan ke profil.php (atau index.php sesuai keinginanmu)
+            // Sesuai permintaanmu agar user bisa langsung cek status pesanan, diarahkan ke profil.php lebih optimal!
+            $tujuan = ($row['role'] === 'admin') ? 'admin/index.php' : 'profil.php';
+
+            // Simpan penanda ke localStorage lewat JavaScript untuk sinkronisasi cart/checkout lalu pindah halaman
             echo "<script>
                 localStorage.setItem('isLoggedIn', 'true');
-            </script>";
-
-            if ($row['role'] === 'admin') {
-                echo "<script>window.location.href = 'admin/index.php';</script>";
-            } else {
-                echo "<script>window.location.href = 'index.php';</script>";
-            }
+                window.location.href = '$tujuan';
+              </script>";
             exit();
         } else {
             $error = "Password yang kamu masukkan salah!";
@@ -40,6 +39,7 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>

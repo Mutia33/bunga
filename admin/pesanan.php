@@ -63,57 +63,62 @@ $query_pesanan = mysqli_query($koneksi, "SELECT * FROM pesanan ORDER BY id_pesan
             <h3>📋 Daftar Pesanan Pelanggan</h3>
             <table class="table-produk">
                 <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID Pesan</th>
-                        <th>Nama Pemesan</th>
-                        <th>Alamat Pengiriman</th>
-                        <th>Detail Buket</th>
-                        <th>Total Harga</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
+                   <tr>
+    <th>No</th>
+    <th>ID Pesan</th>
+    <th>Nama Pemesan</th>
+    <th>No. HP</th>
+    <th>Email</th>
+    <th>Alamat Pengiriman</th>
+    <th>Catatan</th>
+    <th>Detail Buket</th>
+    <th>Total Harga</th>
+    <th>Status</th>
+    <th>Aksi</th>
+</tr>
                 </thead>
                 <tbody>
-                    <?php 
-                    $no = 1;
-                    if ($query_pesanan && mysqli_num_rows($query_pesanan) > 0):
-                        while ($row = mysqli_fetch_assoc($query_pesanan)): 
-                    ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><b>#<?php echo $row['id_pesanan']; ?></b></td>
-                            <td><?php echo isset($row['nama_pemesan']) ? $row['nama_pemesan'] : 'Pelanggan'; ?></td>
-                            <td><?php echo isset($row['alamat']) ? $row['alamat'] : '-'; ?></td>
-                            <td><?php echo isset($row['detail_produk']) ? $row['detail_produk'] : 'Buket Bunga'; ?></td>
-                            <td>Rp <?php echo is_numeric($row['total_harga']) ? number_format($row['total_harga'], 0, ',', '.') : $row['total_harga']; ?></td>
-                            <td>
-                                <!-- Form ganti status langsung di tabel -->
-                                <form action="" method="POST" style="display:inline;">
-                                    <input type="hidden" name="id_pesanan" value="<?php echo $row['id_pesanan']; ?>">
-                                    <select name="status" onchange="this.form.submit()" style="padding: 5px; border-radius: 6px; border: 1px solid #ccc; font-size: 12px;">
-                                        <option value="Menunggu" <?php if($row['status'] == 'Menunggu') echo 'selected'; ?>>Menunggu</option>
-                                        <option value="Diproses" <?php if($row['status'] == 'Diproses') echo 'selected'; ?>>Diproses</option>
-                                        <option value="Selesai" <?php if($row['status'] == 'Selesai') echo 'selected'; ?>>Selesai</option>
-                                        <option value="Dibatalkan" <?php if($row['status'] == 'Dibatalkan') echo 'selected'; ?>>Dibatalkan</option>
-                                    </select>
-                                    <input type="hidden" name="update_status" value="1">
-                                </form>
-                            </td>
-                            <td>
-                                <a href="pesanan.php?hapus=<?php echo $row['id_pesanan']; ?>" onclick="return confirm('Yakin ingin menghapus data pesanan ini?')" class="btn-hapus" style="color:#e63946; text-decoration:none; font-weight:600;">🗑️ Hapus</a>
-                            </td>
-                        </tr>
-                    <?php 
-                        endwhile;
-                    else:
-                    ?>
+                   <?php
+$no = 1;
+if ($query_pesanan && mysqli_num_rows($query_pesanan) > 0):
+    while ($row = mysqli_fetch_assoc($query_pesanan)):
+?>
+    <tr>
+        <td><?php echo $no++; ?></td>
+        <td><b>#<?php echo $row['id_pesanan']; ?></b></td>
+        <td><?php echo isset($row['nama_pemesan']) ? htmlspecialchars($row['nama_pemesan']) : 'Pelanggan'; ?></td>
+        <td><?php echo isset($row['no_hp']) ? htmlspecialchars($row['no_hp']) : '-'; ?></td>         <!-- Menampilkan No HP -->
+        <td><?php echo isset($row['email']) ? htmlspecialchars($row['email']) : '-'; ?></td>         <!-- Menampilkan Email -->
+        <td><?php echo isset($row['alamat']) ? htmlspecialchars($row['alamat']) : '-'; ?></td>
+        <td><?php echo isset($row['detail_produk']) ? htmlspecialchars($row['detail_produk']) : 'Buket Bunga'; ?></td>
+        <td><?php echo isset($row['catatan']) && !empty($row['catatan']) ? htmlspecialchars($row['catatan']) : '-'; ?></td> <!-- Menampilkan Catatan -->
+        <td>Rp <?php echo is_numeric($row['total_harga']) ? number_format($row['total_harga'], 0, ',', '.') : $row['total_harga']; ?></td>
+        <td>
+            <!-- Form ganti status langsung di tabel -->
+            <form action="" method="POST" style="display:inline;">
+                <input type="hidden" name="id_pesanan" value="<?php echo $row['id_pesanan']; ?>">
+                <select name="status" onchange="this.form.submit()" style="padding: 5px; border-radius: 6px; border: 1px solid #ccc;">
+                    <option value="Menunggu" <?php if($row['status'] == 'Menunggu') echo 'selected'; ?>>Menunggu</option>
+                    <option value="Diproses" <?php if($row['status'] == 'Diproses') echo 'selected'; ?>>Diproses</option>
+                    <option value="Selesai" <?php if($row['status'] == 'Selesai') echo 'selected'; ?>>Selesai</option>
+                    <option value="Dibatalkan" <?php if($row['status'] == 'Dibatalkan') echo 'selected'; ?>>Dibatalkan</option>
+                </select>
+                <input type="hidden" name="update_status" value="1">
+            </form>
+        </td>
+        <td>
+            <a href="pesanan.php?hapus=<?php echo $row['id_pesanan']; ?>" onclick="return confirm('Yakin ingin menghapus data pesanan ini?')">Hapus</a>
+        </td>
+    </tr>
+<?php 
+    endwhile;
+endif; 
+?>
                         <tr>
                             <td colspan="7" style="text-align: center; padding: 25px; color: #777;">
                                 Belum ada pesanan masuk dari pelanggan saat ini. ✨
                             </td>
                         </tr>
-                    <?php endif; ?>
                 </tbody>
             </table>
         </div>

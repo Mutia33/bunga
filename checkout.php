@@ -1,8 +1,65 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+// Cek apakah user sudah login
+if (!isset($_SESSION['id_user'])) {
+    echo "<script>alert('Silakan login terlebih dahulu!'); window.location.href = 'login.php';</script>";
+    exit();
+}
+
+$id_user = $_SESSION['id_user'];
+$nama_user = "";
+$email_user = "";
+$no_hp_user = "";
+$alamat_user = "";
+
+// Ambil data user yang sedang login
+$query_cek = mysqli_query($koneksi, "SELECT * FROM users WHERE id_user = '$id_user'");
+if ($query_cek && mysqli_num_rows($query_cek) > 0) {
+    $data_lgn = mysqli_fetch_assoc($query_cek);
+    $nama_user = $data_lgn['nama'];
+    $email_user = $data_lgn['email'];
+    $no_hp_user = $data_lgn['no_hp'];
+    $alamat_user = $data_lgn['alamat'];
+}
+
+// Ambil data item keranjang yang dicentang dari halaman keranjang.php
+if (!isset($_POST['pilih_item']) || empty($_POST['pilih_item'])) {
+    echo "<script>alert('Pilih minimal 1 produk di keranjang untuk checkout!'); window.location.href = 'keranjang.php';</script>";
+    exit();
+}
+
+$selected_ids = $_POST['pilih_item']; // Berupa array id_keranjang
+$total_harga_semua = 0;
+$detail_pesanan_arr = array();
+$item_details_html = "";
+
+foreach ($selected_ids as $id_keranjang) {
+    $id_keranjang = mysqli_real_escape_string($koneksi, $id_keranjang);
+    $query_k = mysqli_query($koneksi, "SELECT * FROM keranjang WHERE id_keranjang = '$id_keranjang' AND id_user = '$id_user'");
+    
+    if ($row_k = mysqli_fetch_assoc($query_k)) {
+        $subtotal = $row_k['harga'] * $row_k['qty'];
+        $total_harga_semua += $subtotal;
+        
+        $nama_p = $row_k['nama_produk'];
+        $qty_p = $row_k['qty'];
+        $harga_p = $row_k['harga'];
+
+        $detail_pesanan_arr[] = "$nama_p (Jumlah: $qty_p)";
+        $item_details_html .= "<li>$nama_p (Jumlah: $qty_p) - Rp " . number_format($subtotal, 0, ',', '.') . "</li>";
+    }
+}
+
+$detail_produk_str = implode(", ", $detail_pesanan_arr);
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Checkout - Bloom & Co.</title>
+    <title>Checkout - RYACREAFT</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .container-checkout {
@@ -59,6 +116,12 @@
         .btn-konfirmasi:hover {
             background-color: #b0236c;
         }
+        .total-harga-box {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d63384;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +132,8 @@
         <a href="index.php">Home</a>
         <a href="galeri.php">Galeri Buket</a>
         <a href="keranjang.php">Keranjang</a>
-        <a href="login.php">Login/Account</a>
+        <a href="profil.php">Profil Saya</a>
+        <a href="logout.php" style="color: #ff4d4d;">Logout</a>
     </nav>
 </header>
 
@@ -77,91 +141,63 @@
     <h2>📋 Formulir Pengiriman & Checkout</h2>
     <p style="color: #666; margin-bottom: 20px;">Silakan lengkapi data di bawah ini untuk memproses pesanan buket cantikmu!</p>
 
-    <!-- Ringkasan Produk yang dibeli -->
+    <!-- Ringkasan Produk yang dibeli dari Database -->
     <div class="ringkasan-belanja">
         <h3>🛍️ Produk yang Dipilih:</h3>
-        <ul id="list-ringkasan" style="margin: 0; padding-left: 20px; color: #444;">
-            <!-- Dimuat otomatis via JavaScript -->
+        <ul style="margin: 0; padding-left: 20px; color: #444;">
+            <?php echo $item_details_html; ?>
         </ul>
+        <div class="total-harga-box">
+            Total Pembayaran: Rp <?php echo number_format($total_harga_semua, 0, ',', '.'); ?>
+        </div>
     </div>
 
-    <!-- Form Data Pengiriman -->
-    <form onsubmit="selesaiCheckout(event)">
+    <!-- Form Pengiriman diarahkan ke proses-checkout.php -->
+    <form action="proses-checkout.php" method="POST">
+        
+        <!-- Kirim data tersembunyi ke proses-checkout.php -->
+        <input type="hidden" name="detail_produk" value="<?php echo htmlspecialchars($detail_produk_str); ?>">
+        <input type="hidden" name="total_harga" value="<?php echo $total_harga_semua; ?>">
+        
+        <!-- Kirim ulang id_keranjang yang dicentang agar bisa dihapus setelah checkout berhasil -->
+        <?php foreach ($selected_ids as $id_k): ?>
+            <input type="hidden" name="pilih_item[]" value="<?php echo $id_k; ?>">
+        <?php endforeach; ?>
+
         <div class="form-group">
-            <label for="nama">Nama Lengkap Penerima:</label>
-            <input type="text" id="nama" required placeholder="Masukkan nama lengkap kamu">
+            <label>Nama Pemesan</label>
+            <input type="text" name="nama_pemesan" value="<?php echo htmlspecialchars($nama_user); ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="hp">Nomor HP / WhatsApp:</label>
-            <input type="tel" id="hp" required placeholder="Contoh: 081234567890">
+            <label>No. HP / WhatsApp</label>
+            <input type="text" name="no_hp" value="<?php echo htmlspecialchars($no_hp_user); ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" required placeholder="Contoh: emailkamu@gmail.com">
+            <label>Email</label>
+            <input type="email" name="email" value="<?php echo htmlspecialchars($email_user); ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="alamat">Alamat Lengkap Pengiriman:</label>
-            <textarea id="alamat" required placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan, kota..."></textarea>
+            <label>Alamat Lengkap</label>
+            <textarea name="alamat" required><?php echo htmlspecialchars($alamat_user); ?></textarea>
         </div>
 
         <div class="form-group">
-            <label for="catatan">Catatan Tambahan (Opsional):</label>
-            <textarea id="catatan" placeholder="Contoh: Kartu ucapan: 'Happy Graduation Rya!' atau warna pita pink"></textarea>
+            <label>Catatan Pesanan (Opsional)</label>
+            <textarea name="catatan"></textarea>
         </div>
 
-        <button type="submit" class="btn-konfirmasi">✨ Konfirmasi Pesanan Sekarang</button>
+        <button type="submit" name="checkout_btn" class="btn-konfirmasi">
+            Konfirmasi Pesanan
+        </button>
     </form>
 </div>
 
 <footer>
     <p>&copy; 2026 ⊹₊˚‧︵‿₊୨RYACREAFT୧₊‿︵‧˚₊⊹ Made with 🌷 and Pastel Colors.</p>
 </footer>
-
-<script>
-    window.onload = function() {
-        muatRingkasan();
-    };
-
-    function muatRingkasan() {
-        let checkoutItemData = localStorage.getItem('checkout_item');
-        let listRingkasan = document.getElementById('list-ringkasan');
-
-        if (!checkoutItemData) {
-            listRingkasan.innerHTML = "<li>Tidak ada produk yang dipilih.</li>";
-            return;
-        }
-
-        let itemDipilih = JSON.parse(checkoutItemData);
-        listRingkasan.innerHTML = "";
-
-        for (let produk in itemDipilih) {
-            let qty = itemDipilih[produk];
-            let li = document.createElement('li');
-            li.textContent = `${produk} (Jumlah: ${qty})`;
-            listRingkasan.appendChild(li);
-        }
-    }
-
-    function selesaiCheckout(event) {
-        event.preventDefault(); // Mencegah form reload halaman
-
-        let nama = document.getElementById('nama').value;
-        let hp = document.getElementById('hp').value;
-        let alamat = document.getElementById('alamat').value;
-
-        alert(`Terima kasih ${nama}! Pesanan buket kamu berhasil dibuat dan akan segera dikirim ke alamat: ${alamat}. Kami akan menghubungi nomor ${hp} untuk konfirmasi pembayaran.`);
-
-        // Bersihkan keranjang belanja setelah checkout sukses
-        localStorage.removeItem('keranjang_shoope');
-        localStorage.removeItem('checkout_item');
-
-        // Kembalikan ke halaman utama
-        window.location.href = "index.php";
-    }
-</script>
 
 </body>
 </html>

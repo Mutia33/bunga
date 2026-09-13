@@ -1,4 +1,9 @@
-<?php include 'koneksi.php'; ?>
+<?php 
+include 'koneksi.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -11,11 +16,19 @@
 <header>
     <h1>⊹₊˚‧︵‿₊୨RYACREAFT୧₊‿︵‧˚₊⊹</h1>
     <nav>
-        <a href="index.php">Home</a>
-        <a href="galeri.php">Galeri Buket</a>
-        <a href="keranjang.php">Keranjang</a>
-        <a href="login.php" class="btn-login">Login/Account</a>
-    </nav>
+    <a href="index.php">Home</a>
+    <a href="galeri.php">Galeri Buket</a>
+    <a href="keranjang.php">Keranjang</a>
+    
+    <?php if (isset($_SESSION['login']) && $_SESSION['login'] === true): ?>
+        <!-- Jika sudah login / selesai checkout: Tampilkan Profil & Logout -->
+        <a href="profil.php">Profil Saya</a>
+        <a href="logout.php" onclick="return confirm('Yakin ingin keluar dari akun?')">Logout</a>
+    <?php else: ?>
+        <!-- Jika belum login: Tampilkan Login/Account saja -->
+        <a href="login.php">Login/Account</a>
+    <?php endif; ?>
+</nav>
 </header>
 
 <div class="container">

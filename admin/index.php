@@ -9,8 +9,10 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] !== 'admin') {
 }
 
 // Ambil data statistik dinamis dari database
-$query_users = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM users WHERE role = 'user'");
-$total_users = mysqli_fetch_assoc($query_users)['total'];
+// Menghitung semua user di tabel kecuali email admin utama
+$sql_users = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM users WHERE email != 'admin@tokobunga.com'");
+$data_users = mysqli_fetch_assoc($sql_users);
+$total_users = $data_users['total'];
 
 $query_produk = mysqli_query($koneksi, "SELECT COUNT(*) as total FROM produk");
 $total_produk = $query_produk ? mysqli_fetch_assoc($query_produk)['total'] : 0;
@@ -70,7 +72,7 @@ $total_produk = $query_produk ? mysqli_fetch_assoc($query_produk)['total'] : 0;
                     <div class="stat-icon">📑</div>
                     <div class="stat-info">
                         <h3>Pesanan Baru</h3>
-                        <p class="stat-number">0</p>
+                        <p class="stat-number"><?php echo $total_pesanan; ?></p>
                     </div>
                 </div>
             </div>

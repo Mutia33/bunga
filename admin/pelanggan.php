@@ -18,7 +18,9 @@ if (isset($_GET['hapus'])) {
 }
 
 // Ambil Data Pelanggan (hanya yang role-nya 'user')
-$query_pelanggan = mysqli_query($koneksi, "SELECT * FROM users WHERE role = 'user' ORDER BY id_user DESC");
+// Mengambil seluruh data dari tabel users secara berurutan dari yang terbaru
+// Ambil Data Pelanggan (hanya mengecualikan admin / menampilkan yang rolenya 'user')
+$query_pelanggan = mysqli_query($koneksi, "SELECT * FROM users WHERE role != 'admin' ORDER BY id_user DESC");
 ?>
 
 <!DOCTYPE html>
