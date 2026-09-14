@@ -103,5 +103,10 @@ if (isset($_POST['update'])) {
             </form>
         </div>
     </div>
+
+<footer>
+    <p>&copy; 2026 ⊹₊˚‧︵‿₊୨RYACREAFT୧₊‿︵‧˚₊⊹ Made with 🌷 and Pastel Colors.</p>
+</footer>
+
 </body>
 </html>

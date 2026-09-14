@@ -96,5 +96,9 @@ $total_produk = $query_produk ? mysqli_fetch_assoc($query_produk)['total'] : 0;
         </main>
     </div>
 
+<footer>
+    <p>&copy; 2026 ⊹₊˚‧︵‿₊୨RYACREAFT୧₊‿︵‧˚₊⊹ Made with 🌷 and Pastel Colors.</p>
+</footer>
+
 </body>
 </html>

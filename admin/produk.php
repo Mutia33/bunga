@@ -182,5 +182,9 @@ $query_produk = mysqli_query($koneksi, "SELECT * FROM produk ORDER BY id_produk 
 
     </div>
 
+<footer>
+    <p>&copy; 2026 ⊹₊˚‧︵‿₊୨RYACREAFT୧₊‿︵‧˚₊⊹ Made with 🌷 and Pastel Colors.</p>
+</footer>
+
 </body>
 </html>
